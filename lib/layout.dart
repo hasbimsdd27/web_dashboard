@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:web_dashboard/helpers/responsiveness.dart';
 import 'package:web_dashboard/widgets/large_screen.dart';
 import 'package:web_dashboard/widgets/small_screen.dart';
+import 'package:web_dashboard/widgets/top_nav.dart';
 
 class SiteLayout extends StatelessWidget {
-  const SiteLayout({Key? key}) : super(key: key);
+  SiteLayout({Key? key}) : super(key: key);
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-      ),
-      body: ResponsiveWidget(
+      key: scaffoldKey,
+      appBar: topNavigationBar(context, scaffoldKey),
+      drawer: const Drawer(),
+      body: const ResponsiveWidget(
         largeScreen: LargeScreen(),
         smallScreen: SmallScreen(),
       ),
