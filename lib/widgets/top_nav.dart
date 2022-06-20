@@ -74,10 +74,11 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
             height: 22,
             color: lightGrey,
           ),
-          const SizedBox(
-            width: 24,
+          SizedBox(
+            width: ResponsiveWidget.isSmallScreen(context) ? 20 : 24,
           ),
-          CustomText(text: "Hasbi Musaddad", color: lightGrey),
+          if (!ResponsiveWidget.isSmallScreen(context))
+            CustomText(text: "Hasbi Musaddad", color: lightGrey),
           const SizedBox(
             width: 16,
           ),
